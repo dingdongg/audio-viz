@@ -15,3 +15,34 @@ const context = canvas.getContext('2d');
 let audioSource;
 let analyzer;
 
+container.addEventListener('click', () => {
+    audio1.play();
+
+    // create audio node from the audio HTML
+    audioSource = audioContext.createMediaElementSource(audio1);
+
+    // create analyzer node (get time/frequency data)
+    analyzer = audioContext.createAnalyser();
+
+    // allow analyzer to analyze our audio node
+    audioSource.connect(analyzer);
+
+    // connect analyzer to default speakers
+    analyzer.connect(audioContext.destination);
+
+    // number of audio samples wanted in analyzer data file
+    analyzer.fftSize = 64;
+
+    // # data values in analyzer data file
+    // HALF of fftSize 
+    // = number of bars on screen
+    const bufferLength = analyzer.frequencyBinCount;
+
+    const dataArray = new Uint8Array(bufferLength);
+
+    // width of single bar in visualizer
+    const barWidth = canvas.clientWidth / bufferLength;
+    let barHeight;
+    let x = 0; // increment by barWidth for each bar
+});
+
