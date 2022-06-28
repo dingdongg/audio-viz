@@ -113,7 +113,10 @@ file.addEventListener('change', function() {
 function drawlVisualizer(bufferLength, x, barWidth, barHeight, dataArray) {
     for (let i = 0; i < bufferLength; i++) {
         barHeight = dataArray[i];
-        context.fillStyle = 'white';
+        const red = i * 20 / barHeight;
+        const green = barHeight / (i + 1);
+        const blue = i * 5;
+        context.fillStyle = `rgb(${red}, ${green}, ${blue})`;
         context.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
         x += barWidth;
     }
