@@ -2,7 +2,7 @@ const container = document.getElementById('container');
 const canvas = document.getElementById('canvas1');
 const file = document.getElementById('file-upload');
 
-const resolution = 2 ** 8;
+const resolution = 2 ** 10;
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -117,13 +117,9 @@ function drawlVisualizer(bufferLength, x, barWidth, barHeight, dataArray) {
         barHeight = dataArray[i];
         context.save();
         context.translate(canvas.width / 2, canvas.height / 2); // this is the new (0, 0)
-        context.rotate(i * Math.PI * 2 / bufferLength);
+        context.rotate(i * Math.PI * 3 / bufferLength);
 
-        // const red = i * 20 / barHeight;
-        // const green = barHeight / (i + 1);
-        // const blue = i * 5;
-        // context.fillStyle = `rgb(${red}, ${green}, ${blue})`;
-        const hue = 40;
+        const hue = i /3;
         context.fillStyle = `hsl(${hue}, 100%, 50%)`;
         context.fillRect(0, 0, barWidth, barHeight);
         x += barWidth;
