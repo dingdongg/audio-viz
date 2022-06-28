@@ -2,6 +2,8 @@ const container = document.getElementById('container');
 const canvas = document.getElementById('canvas1');
 const file = document.getElementById('file-upload');
 
+const resolution = 2 ** 8;
+
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
@@ -31,7 +33,7 @@ container.addEventListener('click', () => {
     analyzer.connect(audioContext.destination);
 
     // number of audio samples wanted in analyzer data file
-    analyzer.fftSize = 64;
+    analyzer.fftSize = resolution;
 
     // # data values in analyzer data file
     // HALF of fftSize 
@@ -41,7 +43,7 @@ container.addEventListener('click', () => {
     const dataArray = new Uint8Array(bufferLength);
 
     // width of single bar in visualizer
-    const barWidth = canvas.width / bufferLength;
+    const barWidth = canvas.width / 2 / bufferLength;
     let barHeight;
     let x; // increment by barWidth for each bar
 
@@ -80,7 +82,7 @@ file.addEventListener('change', function() {
     analyzer.connect(audioContext.destination);
 
     // number of audio samples wanted in analyzer data file
-    analyzer.fftSize = 64;
+    analyzer.fftSize = resolution;
 
     // # data values in analyzer data file
     // HALF of fftSize 
@@ -90,7 +92,7 @@ file.addEventListener('change', function() {
     const dataArray = new Uint8Array(bufferLength);
 
     // width of single bar in visualizer
-    const barWidth = canvas.width / bufferLength;
+    const barWidth = canvas.width / 2 / bufferLength;
     let barHeight;
     let x; // increment by barWidth for each bar
 
@@ -113,11 +115,19 @@ file.addEventListener('change', function() {
 function drawlVisualizer(bufferLength, x, barWidth, barHeight, dataArray) {
     for (let i = 0; i < bufferLength; i++) {
         barHeight = dataArray[i];
-        const red = i * 20 / barHeight;
-        const green = barHeight / (i + 1);
-        const blue = i * 5;
-        context.fillStyle = `rgb(${red}, ${green}, ${blue})`;
-        context.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+        context.save();
+        context.translate(canvas.width / 2, canvas.height / 2); // this is the new (0, 0)
+        context.rotate(i * Math.PI * 2 / bufferLength);
+
+        // const red = i * 20 / barHeight;
+        // const green = barHeight / (i + 1);
+        // const blue = i * 5;
+        // context.fillStyle = `rgb(${red}, ${green}, ${blue})`;
+        const hue = 40;
+        context.fillStyle = `hsl(${hue}, 100%, 50%)`;
+        context.fillRect(0, 0, barWidth, barHeight);
         x += barWidth;
+
+        context.restore();
     }
 }
