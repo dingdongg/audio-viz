@@ -1,7 +1,3 @@
-/* body {
-    background: black;
-} */
-
 * {
     margin: 0;
     padding: 0;
@@ -32,8 +28,14 @@
 }
 
 #file-upload {
+    color: white;
+    display: none;
+}
+
+#file-upload-label {
+    color: white;
     position: absolute;
     top: 150px;
-    color: white;
     z-index: 100;
+    left: 47%;
 }
