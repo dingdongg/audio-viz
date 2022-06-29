@@ -1,6 +1,7 @@
 const container = document.getElementById('container');
 const canvas = document.getElementById('canvas1');
 const file = document.getElementById('file-upload');
+const demoCheckbox = document.getElementById('demo-checkbox');
 
 const resolution = 2 ** 10;
 
@@ -12,6 +13,14 @@ const context = canvas.getContext('2d');
 
 let audioSource;
 let analyzer;
+
+
+/**
+ * configure audio node upon window load
+ * refactor code 
+ * allow toggling of demo-checkbox
+ * clicking anywhere in the container will play/pause the current song, not reset it
+ */
 
 container.addEventListener('click', () => {
     // let audio1 = new Audio();
