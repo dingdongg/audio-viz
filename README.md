@@ -3,7 +3,6 @@
 This application allows users to visualize any audio file.
 
 ## Link to website
----
 Check it out [here](https://dingdongg.github.io/audio-viz/)!
 
 ### Credits
