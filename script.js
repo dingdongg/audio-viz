@@ -120,7 +120,7 @@ function drawlVisualizer(bufferLength, x, barWidth, barHeight, dataArray) {
         let innerAngle = 2 * Math.PI / (bufferLength);
         context.rotate(i * innerAngle);
 
-        const hue = (i + 180);
+        const hue = i * 0.71;
         context.fillStyle = `hsl(${hue}, 100%, 50%)`;
         context.fillRect(0, (barHeight * -0.1) + 100, barWidth, barHeight);
         // context.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
