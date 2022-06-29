@@ -34,8 +34,22 @@
 
 #file-upload-label {
     color: white;
-    position: absolute;
     top: 150px;
     z-index: 100;
     left: 47%;
+}
+
+#demo-checkbox-label {
+    color: white;
+    top: 150px;
+    z-index: 100;
+    left: 60%;
+}
+
+#input-container {
+    display: flex;
+    height: 20px;
+    width: 50%;
+    margin: 20px auto;
+    justify-content: space-around;
 }

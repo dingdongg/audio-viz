@@ -12,10 +12,17 @@
     <div id="container">
         <canvas id="canvas1"></canvas>
         <audio controls id="audio1"></audio>
-        <label for="file-upload" id="file-upload-label">
-            Click to select file
-            <input type="file" id="file-upload" accept="audio/*">
-        </label>
+        <div id="input-container">
+            <label for="file-upload" id="file-upload-label">
+                Click to select file
+                <input type="file" id="file-upload" accept="audio/*">
+            </label>
+            <label for="demo-checkbox" id="demo-checkbox-label">
+                Play sample audio?
+                <input type="checkbox" id="demo-checkbox">
+            </label>
+        </div>
+        
     </div>
 
     <script src="./script.js"></script>

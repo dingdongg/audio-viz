@@ -123,7 +123,6 @@ function drawlVisualizer(bufferLength, x, barWidth, barHeight, dataArray) {
         const hue = (i + 180);
         context.fillStyle = `hsl(${hue}, 100%, 50%)`;
         context.fillRect(0, (barHeight * -0.1) + 100, barWidth, barHeight);
-        context.
         // context.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
 
         context.restore();
